@@ -1,8 +1,23 @@
-<h2>Form</h2>
-<a href="{% url 'tasks' %}">Go Back</a>
+{% extends 'base/main.html' %}
+{% block content %}
 
-<form method="POST" action="">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+<div class="header-bar">
+    <a href="{% url 'tasks' %}">&#8592; Back</a>
+</div>
+
+<div class="card-body">
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <label>{{form.title.label}}</label>
+        {{form.title}}
+
+        <label>{{form.description.label}}</label>
+        {{form.description}}
+
+        {{form.complete.label}} {{form.complete}}
+        <input style="display: flex; margin-top: 1rem;" class="button" type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock content %}
